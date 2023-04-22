@@ -1,0 +1,27 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: spaapp
+  namespace: default
+  labels:
+    app: spaapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spaapp
+  template:
+    metadata:
+      labels:
+        app: spaapp
+    spec:
+      containers:
+        - name: spaapp
+          image: spaapp:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            limits:
+              memory: 1000Mi

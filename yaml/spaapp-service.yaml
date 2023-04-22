@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spaapp
+  namespace: default
+spec:
+  ports:
+  - name: http-port
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: spaapp

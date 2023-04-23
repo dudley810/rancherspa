@@ -1,6 +1,6 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["src/SpaApp.csproj", "SpaApp/"]
+COPY ["rancherspa/src/SpaApp/SpaApp.csproj", "SpaApp/"]
 RUN dotnet restore "SpaApp/SpaApp.csproj"
 COPY . .
 WORKDIR "/src/SpaApp"
@@ -11,5 +11,5 @@ RUN dotnet publish "SpaApp.csproj" -c Release -o /app/publish
 
 FROM nginx:alpine AS final
 WORKDIR /usr/share/nginx/html
-COPY ["yaml/nginx.conf", "/etc/nginx/nginx.conf"]
+COPY ["rancherspa/yaml/nginx.conf", "/etc/nginx/nginx.conf"]
 COPY --from=publish /app/publish/wwwroot .

@@ -1,6 +1,6 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["rancherspa/src/SpaApp/SpaApp.csproj", "SpaApp/"]
+COPY ["src/SpaApp/SpaApp.csproj", "SpaApp/"]
 RUN dotnet restore "SpaApp/SpaApp.csproj"
 COPY . .
 WORKDIR "/src/SpaApp"
